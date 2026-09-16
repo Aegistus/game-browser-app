@@ -3,12 +3,19 @@ import ListItem from '@mui/material/ListItem'
 
 function ListGroup()
 {
+    const items =
+    [
+        "New York",
+        "San Francisco",
+        "Tokyo",
+        "London",
+        "Paris"
+    ];
+
+    
     return(
         <List>
-            <ListItem><h1>Item 1</h1></ListItem>
-            <ListItem><h1>Item 2</h1></ListItem>
-            <ListItem><h1>Item 3</h1></ListItem>
-            <ListItem><h1>Item 4</h1></ListItem>
+            { items.map(item => <ListItem key={item}><h1>{item}</h1></ListItem>) }
         </List>
     ); 
 }
