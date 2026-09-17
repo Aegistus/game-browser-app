@@ -1,9 +1,12 @@
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
+import { useState } from 'react';
+import '../assets/main.css'
 
 function ListGroup()
 {
-    const items =
+    const [selectedIndex, setSelectedIndex] = useState(0);
+    let items =
     [
         "New York",
         "San Francisco",
@@ -12,10 +15,20 @@ function ListGroup()
         "Paris"
     ];
 
-    
+    if (items.length == 0)
+    {
+        return <p>No item found</p>;
+    }
     return(
-        <List>
-            { items.map(item => <ListItem key={item}><h1>{item}</h1></ListItem>) }
+        <List className="List">
+            { items.map((item, index) => (
+                <ListItem 
+                    className={selectedIndex === index ? 'ListItemActive' : 'ListItem'} 
+                    key={item}
+                    onClick={() => {setSelectedIndex(index);}}
+                >
+                    <h1>{item}</h1>
+                </ListItem>) )}
         </List>
     ); 
 }
